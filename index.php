@@ -25,7 +25,7 @@ switch ($method) {
     case 'POST':
         // Get the raw POST data
         $rawData = file_get_contents('php://input');
-        parse_str($rawData, $data);
+        $data = json_decode($rawData, true);
 
         // Check if required fields are present
         if (!isset($data['name'], $data['breed'], $data['age'], $data['weight'])) {
@@ -41,7 +41,7 @@ switch ($method) {
     case 'PUT':
         // Get the raw PUT data
         $rawData = file_get_contents('php://input');
-        parse_str($rawData, $data);
+        $data = json_decode($rawData, true);
 
         // Check if required fields are present
         if (!isset($data['id'], $data['name'], $data['breed'], $data['age'], $data['weight'])) {
@@ -57,7 +57,7 @@ switch ($method) {
     case 'DELETE':
         // Get the raw DELETE data
         $rawData = file_get_contents('php://input');
-        parse_str($rawData, $data);
+        $data = json_decode($rawData, true);
 
         // Check if required fields are present
         if (!isset($data['id'])) {
